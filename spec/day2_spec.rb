@@ -37,9 +37,8 @@ Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green".split("\n")
 
   describe "with real data of part 2" do
     it "should return the correct value" do
-      pending
       result = Day2.part_two
-      expect(result).to eq(54719)
+      expect(result).to eq(66363)
     end
   end
 end

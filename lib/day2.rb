@@ -11,13 +11,7 @@ module Day2
 
   def self.part_one(input = AocInput.read_day(2))
     parsed_games = input.map { |line| parse_gameline(line) }
-      .map do |results|
-      { id: results[:id] }.merge(
-        results[:games].reduce do |memo, hash|
-          hash.merge(memo) { |_, oldval, newval| [oldval, newval].max }
-        end
-      )
-    end
+      .map { |game| get_max_colors(game) }
 
     parsed_games.select do |item|
       [:red, :green, :blue].all? { |color| item[color] <= MAX_CUBES[color] }
@@ -25,7 +19,17 @@ module Day2
   end
 
   def self.part_two(input = AocInput.read_day(2))
-    1
+    max_colors = input.map { |line| parse_gameline(line) }
+                      .map { |game| get_max_colors(game) }
+    max_colors.map { |game| game[:red] * game[:green] * game[:blue] }.sum
+  end
+
+  def self.get_max_colors(game)
+    max_colors = game[:games].reduce do |memo, hash|
+      hash.merge(memo) { |_, old_value, new_value| [old_value, new_value].max }
+    end
+
+    max_colors.merge(id: game[:id])
   end
 
   # @param line [String]
