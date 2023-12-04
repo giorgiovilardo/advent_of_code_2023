@@ -39,9 +39,8 @@ Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11".split("\n")
 
   describe "with real data of part 2" do
     it "should return the correct value" do
-      pending
       result = Day4.part_two
-      expect(result).to eq(87449461)
+      expect(result).to eq(5920640)
     end
   end
 end
