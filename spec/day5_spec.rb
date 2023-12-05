@@ -53,7 +53,6 @@ humidity-to-location map:
 
   describe "with test data of part 2" do
     it "should return 30" do
-      pending
       input = "seeds: 79 14 55 13
 
 seed-to-soil map:
@@ -88,15 +87,14 @@ humidity-to-location map:
 60 56 37
 56 93 4".split("\n")
       result = Day5.part_two(input)
-      expect(result).to eq(30)
+      expect(result).to eq(46)
     end
   end
 
   describe "with real data of part 2" do
     it "should return the correct value" do
-      pending
       result = Day5.part_two
-      expect(result).to eq(5920640)
+      expect(result).to eq(2254686)
     end
   end
 end

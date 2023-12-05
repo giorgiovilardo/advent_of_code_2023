@@ -14,3 +14,24 @@ Ruby plays out like a functional language in some situations, even if it's not. 
 ## Day 3
 
 God I hade 2d grids
+
+## Day 4
+
+In general an easy day, nothing much to say
+
+## Day 5
+
+Interesting problem! I liked working with ranges, made everything easier.
+
+What I didnt like:
+
+![img.png](resources/img.png)
+
+I'm not programming particularly performance oriented, but 32 secs for ~14 millions method calls? 
+
+Either
+
+* I'm missing something
+* Ruby is horrendously slow
+
+I'm leaning towards reimplementing this in scala/go/python (maintaining the domain modeling which I liked) to have a comparison.
