@@ -46,9 +46,8 @@ humidity-to-location map:
 
   describe "with real data of part 1" do
     it "should return the correct value" do
-      pending
       result = Day5.part_one
-      expect(result).to eq(23235)
+      expect(result).to eq(199602917)
     end
   end
 
