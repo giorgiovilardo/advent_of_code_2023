@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-require_relative 'helper/aoc_input'
+require_relative "helper/aoc_input"
 
 module Day3
-  def self.part_one(input=AocInput.read_day(3))
+  def self.part_one(input = AocInput.read_day(3))
     engine = Engine.new(input)
-    engine.valid_numbers.map {|num| num.value}.sum
-    end
+    engine.valid_numbers.map { |num| num.value }.sum
+  end
 
-  def self.part_two(input=AocInput.read_day(3))
+  def self.part_two(input = AocInput.read_day(3))
     1
   end
 end
@@ -20,7 +20,7 @@ class Engine
   def initialize(data)
     @x = data.length
     @y = @x == 0 ? 0 : data[0].length
-    @schema_rows = data.map{ _1.chars }
+    @schema_rows = data.map { _1.chars }
     @symbols = @schema_rows.flat_map.with_index do |row, row_number|
       row.map.with_index do |cell, cell_number|
         [cell, [row_number, cell_number]]
@@ -31,9 +31,11 @@ class Engine
 
   def valid_numbers
     symsets = @symbols.map(&:to_set)
-    @numbers.select { |num| num.perimeter.any? do |coords|
-      symsets.include?(coords.to_set)
-    end }
+    @numbers.select { |num|
+      num.perimeter.any? do |coords|
+        symsets.include?(coords.to_set)
+      end
+    }
   end
 end
 
@@ -51,7 +53,7 @@ class Number
 
   def self.from_row(row, row_index, max_width, max_height)
     num_coords = row_numbers_data(row)
-    num_values = num_coords.map { |coord| coord.map { |cell| row[cell] }}.map { _1.join.to_i }
+    num_values = num_coords.map { |coord| coord.map { |cell| row[cell] } }.map { _1.join.to_i }
     num_values.map.with_index { |num, index| Number.new(num, row_index, max_width, max_height, num_coords[index].first, num_coords[index].last) }
   end
 
