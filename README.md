@@ -35,3 +35,7 @@ Either
 * Ruby is horrendously slow
 
 I'm leaning towards reimplementing this in scala/go/python (maintaining the domain modeling which I liked) to have a comparison.
+
+## Day 6
+
+Part 1 very easy: .count() is nice.

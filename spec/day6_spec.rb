@@ -5,7 +5,7 @@ require_relative "../lib/day6"
 
 RSpec.describe Day6 do
   describe "with test data of part 1" do
-    it "should return 13" do
+    it "should return 288" do
       input = "Time:      7  15   30
 Distance:  9  40  200".split("\n")
       result = Day6.part_one(input)
@@ -16,7 +16,7 @@ Distance:  9  40  200".split("\n")
   describe "with real data of part 1" do
     it "should return the correct value" do
       result = Day6.part_one
-      expect(result).to eq(199602917)
+      expect(result).to eq(633080)
     end
   end
 
