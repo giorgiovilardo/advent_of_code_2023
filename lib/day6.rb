@@ -10,7 +10,9 @@ module Day6
   end
 
   def self.part_two(input = AocInput.read_day(6))
-    1
+    duration, record = input.map{_1.split(":").last.delete(" ")}.map(&:to_i)
+    race = Race.new(duration, record)
+    race.ways_to_beat_record_count
   end
 end
 

@@ -39,3 +39,8 @@ I'm leaning towards reimplementing this in scala/go/python (maintaining the doma
 ## Day 6
 
 Part 1 very easy: .count() is nice.
+
+Part 2: uneventful, can be easily bruteforced. 
+
+Smarter/more performing way would be to adopt binary search on the duration range, but it's a mass of O(1) operations so
+unless the range is huge, there is no need.
