@@ -13,7 +13,7 @@ Ruby plays out like a functional language in some situations, even if it's not. 
 
 ## Day 3
 
-God I hade 2d grids
+God I hate 2d grids
 
 ## Day 4
 
@@ -44,3 +44,14 @@ Part 2: uneventful, can be easily bruteforced.
 
 Smarter/more performing way would be to adopt binary search on the duration range, but it's a mass of O(1) operations so
 unless the range is huge, there is no need.
+
+## Day 7
+
+The surprise was in part 2, as my original way of setting the order via a hash
+constant is not very ruby compatible; if the method using that constant
+(in this case the spaceship `<=>` comparison method) is inherited as-is, the
+subclass will execute it in the context of the superclass, ignoring eventual
+redefinition of the constants in the more specific class.
+
+Not really intuitive, but the good approach would have been a single hand
+with a comparator class.
