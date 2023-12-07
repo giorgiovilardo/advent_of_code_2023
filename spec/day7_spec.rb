@@ -19,26 +19,24 @@ QQQJA 483".split("\n")
   describe "with real data of part 1" do
     it "should return the correct value" do
       result = Day7.part_one
-      expect(result).to eq(633080)
+      expect(result).to eq(250946742)
     end
   end
 
   describe "with test data of part 2" do
     it "should return 71503" do
-      pending
       input = "32T3K 765
 T55J5 684
 KK677 28
 KTJJT 220
 QQQJA 483".split("\n")
       result = Day7.part_two(input)
-      expect(result).to eq(71503)
+      expect(result).to eq(5905)
     end
   end
 
   describe "with real data of part 2" do
     it "should return the correct value" do
-      pending
       result = Day7.part_two
       expect(result).to eq(20048741)
     end
