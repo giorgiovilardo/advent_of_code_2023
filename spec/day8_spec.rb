@@ -19,21 +19,21 @@ ZZZ = (ZZZ, ZZZ)".split("\n")
       expect(result).to eq(2)
     end
 
-    it "the second example should return 2" do
+    it "the second example should return 6" do
       input = "LLR
 
 AAA = (BBB, BBB)
 BBB = (AAA, ZZZ)
 ZZZ = (ZZZ, ZZZ)".split("\n")
       result = Day8.part_one(input)
-      expect(result).to eq(3)
+      expect(result).to eq(6)
     end
   end
 
   describe "with real data of part 1" do
     it "should return the correct value" do
       result = Day8.part_one
-      expect(result).to eq(-1)
+      expect(result).to eq(17287)
     end
   end
 
