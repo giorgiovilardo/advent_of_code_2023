@@ -55,3 +55,9 @@ redefinition of the constants in the more specific class.
 
 Not really intuitive, but the good approach would have been a single hand
 with a comparator class.
+
+## Day 8
+
+God I hate trees
+
+(notice this subtheme of "I hate <thing I did not study properly>")
