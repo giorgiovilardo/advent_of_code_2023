@@ -16,11 +16,11 @@ end
 
 module HandList
   def self.from_aoc_input(aoc_input)
-    aoc_input.map{|game| game.split(" ")}.map{|(hand, bid)| Hand.new(hand, bid)}
+    aoc_input.map { |game| game.split(" ") }.map { |(hand, bid)| Hand.new(hand, bid) }
   end
 
   def self.from_aoc_input_for_part_2(aoc_input)
-    aoc_input.map{|game| game.split(" ")}.map{|(hand, bid)| HandWithJokers.new(hand, bid)}
+    aoc_input.map { |game| game.split(" ") }.map { |(hand, bid)| HandWithJokers.new(hand, bid) }
   end
 end
 
@@ -35,7 +35,7 @@ class Hand
     [3, 1, 1] => "three_of_a_kind",
     [2, 2, 1] => "two_pairs",
     [2, 1, 1, 1] => "pair",
-    [1, 1, 1, 1, 1] => "high_card"
+    [1, 1, 1, 1, 1] => "high_card",
   }
 
   RANKS_ORDER = {
@@ -45,7 +45,8 @@ class Hand
     "three_of_a_kind" => 18,
     "two_pairs" => 13,
     "pair" => 9,
-    "high_card" => 5}
+    "high_card" => 5,
+  }
 
   def initialize(cards, bid)
     @cards = cards.split("").map(&:upcase)
@@ -54,26 +55,26 @@ class Hand
   end
 
   def <=>(other)
-    @rank != other.rank ? RANKS_ORDER[@rank] - RANKS_ORDER[other.rank] : @cards.zip(other.cards).map{|card, other_card| order[card] - order[other_card] }.find{ |num| num != 0}
+    @rank != other.rank ? RANKS_ORDER[@rank] - RANKS_ORDER[other.rank] : @cards.zip(other.cards).map { |card, other_card| order[card] - order[other_card] }.find { |num| num != 0 }
   end
 
   private
 
   def order
     {
-      '2' => 1,
-      '3' => 2,
-      '4' => 3,
-      '5' => 4,
-      '6' => 5,
-      '7' => 6,
-      '8' => 7,
-      '9' => 8,
-      'T' => 9,
-      'J' => 10,
-      'Q' => 11,
-      'K' => 12,
-      'A' => 13
+      "2" => 1,
+      "3" => 2,
+      "4" => 3,
+      "5" => 4,
+      "6" => 5,
+      "7" => 6,
+      "8" => 7,
+      "9" => 8,
+      "T" => 9,
+      "J" => 10,
+      "Q" => 11,
+      "K" => 12,
+      "A" => 13,
     }
   end
 end
@@ -105,19 +106,19 @@ class HandWithJokers < Hand
 
   def order
     {
-      'J' => 0,
-      '2' => 1,
-      '3' => 2,
-      '4' => 3,
-      '5' => 4,
-      '6' => 5,
-      '7' => 6,
-      '8' => 7,
-      '9' => 8,
-      'T' => 9,
-      'Q' => 11,
-      'K' => 12,
-      'A' => 13
+      "J" => 0,
+      "2" => 1,
+      "3" => 2,
+      "4" => 3,
+      "5" => 4,
+      "6" => 5,
+      "7" => 6,
+      "8" => 7,
+      "9" => 8,
+      "T" => 9,
+      "Q" => 11,
+      "K" => 12,
+      "A" => 13,
     }
   end
 end

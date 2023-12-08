@@ -13,7 +13,21 @@ module Day8
   end
 
   def self.part_two(input = AocInput.read_day(8))
-    1
+    pace = []
+    normal_map = NodeMap.from_aoc_input(input)
+    positions_with_a = NodeMap.from_aoc_input(input).node_map.keys.select { |k| k.end_with?("A") }
+    nodemaps_with_a = positions_with_a.map { |pos| NodeMap.new(normal_map.node_map, position = pos) }
+    # "GPA", "GTA", "VDA", "BBA", "AAA", "VSA"
+    nodemaps_with_a.inject([]) do |finished_nodemaps, current_nodemap|
+      ml = MoveList.from_aoc_input(input)
+      until current_nodemap.at_end?
+        current_nodemap = current_nodemap.public_send(ml.next_move)
+      end
+      pace.push(ml.steps)
+      finished_nodemaps.push(current_nodemap)
+    end
+
+    pace.inject(&:lcm)
   end
 end
 
@@ -37,7 +51,9 @@ class MoveList
 end
 
 class NodeMap
-  def initialize(node_map, position="AAA")
+  attr_reader :node_map
+
+  def initialize(node_map, position = "AAA")
     @node_map = node_map
     @position = position
   end
@@ -46,7 +62,7 @@ class NodeMap
     self.new(
       input.drop(2).map do |line|
         match = line.match(/(?<name>\w{3}) = \((?<left>\w{3}), (?<right>\w{3})\)/)
-        {match[:name] => [match[:left], match[:right]]}
+        { match[:name] => [match[:left], match[:right]] }
       end.inject(&:merge),
     )
   end
@@ -60,6 +76,6 @@ class NodeMap
   end
 
   def at_end?
-    @position == "ZZZ"
+    @position.end_with?("Z")
   end
 end

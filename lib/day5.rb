@@ -6,7 +6,7 @@ module Day5
   def self.part_one(input = AocInput.read_day(5))
     seed_list = SeedList.new(input.first)
     seedmaps = SeedMap.from_aoc_input(input)
-    locations = seed_list.map { |seed_number| seedmaps.inject(seed_number) { |seednum, seedmap| seedmap.transform(seednum)}}
+    locations = seed_list.map { |seed_number| seedmaps.inject(seed_number) { |seednum, seedmap| seedmap.transform(seednum) } }
     locations.min
   end
 
@@ -16,13 +16,13 @@ module Day5
     # helper = ->(n, s) {"From #{seedmaps[s].to} #{n} to #{seedmaps[s].from} #{seedmaps[s].reverse_transform(n)}"}
     result = (0..Float::INFINITY).lazy.map {
       |number_to_test|
-      seedmaps.inject(number_to_test){
+      seedmaps.inject(number_to_test) {
         |seednum, seedmap|
         seedmap.reverse_transform(seednum)
       }
-    }.find { |seed_number| seed_list.contains?(seed_number)}
+    }.find { |seed_number| seed_list.contains?(seed_number) }
 
-    seedmaps.reverse.inject(result) { |seednum, seedmap| seedmap.transform(seednum)}
+    seedmaps.reverse.inject(result) { |seednum, seedmap| seedmap.transform(seednum) }
   end
 end
 
@@ -42,7 +42,7 @@ end
 
 class RangedSeedList < SeedList
   def initialize(seed_row)
-    @seeds = seed_row.split(" ").drop(1).map(&:to_i).each_slice(2).map{|(start, times)| start..start+times}
+    @seeds = seed_row.split(" ").drop(1).map(&:to_i).each_slice(2).map { |(start, times)| start..start + times }
   end
 
   def contains?(seed_number)
@@ -83,13 +83,13 @@ class SeedMap
       .reject(&:empty?)
       .slice_before { |row| row.end_with?("map:") }
       .map do |chunk|
-        from, to = chunk.first.split(" ").first.split("-").reject { |el| el == "to"}
-        triplets = chunk.drop(1).map { |group| group.split.map(&:to_i) }
-        SeedMap.new(
-          from,
-          to,
-          triplets.map { |(destination, source, times)| {source..source+times-1 => destination..destination+times-1} }.inject(&:merge)
-        )
-      end
+      from, to = chunk.first.split(" ").first.split("-").reject { |el| el == "to" }
+      triplets = chunk.drop(1).map { |group| group.split.map(&:to_i) }
+      SeedMap.new(
+        from,
+        to,
+        triplets.map { |(destination, source, times)| { source..source + times - 1 => destination..destination + times - 1 } }.inject(&:merge)
+      )
+    end
   end
 end

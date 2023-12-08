@@ -38,35 +38,26 @@ ZZZ = (ZZZ, ZZZ)".split("\n")
   end
 
   describe "with test data of part 2" do
-    it "the first example should return 2" do
-      input = "RL
+    it "the first example should return 6" do
+      input = "LR
 
-AAA = (BBB, CCC)
-BBB = (DDD, EEE)
-CCC = (ZZZ, GGG)
-DDD = (DDD, DDD)
-EEE = (EEE, EEE)
-GGG = (GGG, GGG)
-ZZZ = (ZZZ, ZZZ)".split("\n")
+11A = (11B, XXX)
+11B = (XXX, 11Z)
+11Z = (11B, XXX)
+22A = (22B, XXX)
+22B = (22C, 22C)
+22C = (22Z, 22Z)
+22Z = (22B, 22B)
+XXX = (XXX, XXX)".split("\n")
       result = Day8.part_two(input)
-      expect(result).to eq(2)
-    end
-
-    it "the second example should return 2" do
-      input = "LLR
-
-AAA = (BBB, BBB)
-BBB = (AAA, ZZZ)
-ZZZ = (ZZZ, ZZZ)".split("\n")
-      result = Day8.part_two(input)
-      expect(result).to eq(3)
+      expect(result).to eq(6)
     end
   end
 
   describe "with real data of part 2" do
     it "should return the correct value" do
       result = Day8.part_two
-      expect(result).to eq(-1)
+      expect(result).to eq(18625484023687)
     end
   end
 end

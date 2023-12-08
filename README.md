@@ -61,3 +61,10 @@ with a comparator class.
 God I hate trees
 
 (notice this subtheme of "I hate <thing I did not study properly>")
+
+P1: Cheating trees with hashes makes me happy
+
+P2: Once arriving at the mathematical insight it's trivial; I wanted
+to encapsulate the parallelization on another specific `ParallelNodeMap`
+but I got the API wrong, so it really didn't work out. Mutable state
+would have been better in this case.
