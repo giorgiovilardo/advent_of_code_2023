@@ -68,3 +68,14 @@ P2: Once arriving at the mathematical insight it's trivial; I wanted
 to encapsulate the parallelization on another specific `ParallelNodeMap`
 but I got the API wrong, so it really didn't work out. Mutable state
 would have been better in this case.
+
+## Day 9
+
+Huge pause due to RL taking over. I got very distracted by an imperative
+solution, but luckily a brief confrontation with Oli put me again on the
+right track, the rest was a reduce and not much more.
+
+Don't program when ill!
+
+Q: Do ruby has tail call optimization?
+A: Jetbrains AI says yes, but must be turned on via a special RubyVM setting and might interfere with some tooling. ok this is not scala
